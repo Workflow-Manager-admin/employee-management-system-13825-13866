@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  postgres:
+    build: .
+    container_name: ems_postgres
+    environment:
+      POSTGRES_USER: emsuser
+      POSTGRES_PASSWORD: emspassword
+      POSTGRES_DB: emsdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
